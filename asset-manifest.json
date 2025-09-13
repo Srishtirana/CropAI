@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CropAI/static/css/main.b1a4020b.css",
+    "main.js": "/CropAI/static/js/main.08103489.js",
+    "index.html": "/CropAI/index.html",
+    "main.b1a4020b.css.map": "/CropAI/static/css/main.b1a4020b.css.map",
+    "main.08103489.js.map": "/CropAI/static/js/main.08103489.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1a4020b.css",
+    "static/js/main.08103489.js"
+  ]
+}
