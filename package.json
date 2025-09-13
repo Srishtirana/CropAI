@@ -2,7 +2,6 @@
   "name": "crop-recommendation-platform",
   "version": "1.0.0",
   "description": "Digital AI-based Crop Recommendation Platform for farmers",
-  "homepage": "https://srishtirana.github.io/CropAI",
   "private": true,
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
