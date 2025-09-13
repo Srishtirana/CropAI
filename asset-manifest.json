@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/CropAI/static/css/main.b1a4020b.css",
-    "main.js": "/CropAI/static/js/main.08103489.js",
-    "index.html": "/CropAI/index.html",
-    "main.b1a4020b.css.map": "/CropAI/static/css/main.b1a4020b.css.map",
-    "main.08103489.js.map": "/CropAI/static/js/main.08103489.js.map"
+    "main.css": "/static/css/main.b1a4020b.css",
+    "main.js": "/static/js/main.94e6045a.js",
+    "index.html": "/index.html",
+    "main.b1a4020b.css.map": "/static/css/main.b1a4020b.css.map",
+    "main.94e6045a.js.map": "/static/js/main.94e6045a.js.map"
   },
   "entrypoints": [
     "static/css/main.b1a4020b.css",
-    "static/js/main.08103489.js"
+    "static/js/main.94e6045a.js"
   ]
 }
