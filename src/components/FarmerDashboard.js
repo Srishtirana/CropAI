@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -10,12 +10,18 @@ import {
   LogOut, 
   TrendingUp,
   MapPin,
-  Calendar
+  Calendar,
+  SearchCheck,
+  MapPinOff,
+  Loader2
 } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const FarmerDashboard = ({ onLogout }) => {
   const navigate = useNavigate();
-  const { user, alerts, language } = useUser();
+  const { user, alerts, language, updateUserLocation } = useUser();
+  const [isLocating, setIsLocating] = useState(false);
+  const [location, setLocation] = useState(user?.location || null);
 
   const translations = {
     hindi: {
@@ -158,6 +164,10 @@ const FarmerDashboard = ({ onLogout }) => {
 
   const t = translations[language] || translations.hindi;
 
+  const handleCardClick = (path) => {
+    navigate(path);
+  };
+
   const dashboardCards = [
     {
       id: 'recommendation',
@@ -198,7 +208,17 @@ const FarmerDashboard = ({ onLogout }) => {
       bgColor: 'bg-purple-50',
       borderColor: 'border-purple-200',
       route: '/profile'
-    }
+    },
+    {
+      id: 'diagnosis',
+      title: t.cards.diagnosis?.title || 'Crop Diagnosis',
+      subtitle: t.cards.diagnosis?.subtitle || 'Analyze crop health with AI',
+      icon: <SearchCheck className="w-8 h-8" />,
+      color: 'from-blue-500 to-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
+      route: '/crop-diagnosis'
+    },
   ];
 
   const quickStats = [
@@ -322,13 +342,91 @@ const FarmerDashboard = ({ onLogout }) => {
 
         {/* Recent Activity */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">
-            {t.recentActivity}
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900">
+              {translations[language]?.recentActivity || 'Recent Activity'}
+            </h3>
+            <button 
+              onClick={() => navigate('/activity')}
+              className="text-sm text-green-600 hover:text-green-800"
+            >
+              {translations[language]?.viewAll || 'View All'}
+            </button>
+          </div>
+          
+          <div className="space-y-4">
+            {/* Sample activity items */}
+            {[
+              {
+                id: 1,
+                type: 'recommendation',
+                crop: 'Wheat',
+                date: new Date(Date.now() - 3600000 * 2).toISOString(),
+                status: 'completed'
+              },
+              {
+                id: 2,
+                type: 'weather_alert',
+                message: 'Heavy rain expected tomorrow',
+                date: new Date(Date.now() - 86400000).toISOString(),
+                status: 'pending'
+              },
+              {
+                id: 3,
+                type: 'diagnosis',
+                issue: 'Leaf Rust',
+                crop: 'Wheat',
+                date: new Date(Date.now() - 172800000).toISOString(),
+                status: 'completed'
+              }
+            ].map((activity) => (
+              <div key={activity.id} className="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                <div className={`flex-shrink-0 mt-1 ${
+                  activity.status === 'completed' ? 'text-green-500' : 'text-yellow-500'
+                }`}>
+                  {activity.type === 'recommendation' && <Sprout className="h-5 w-5" />}
+                  {activity.type === 'weather_alert' && <Bell className="h-5 w-5" />}
+                  {activity.type === 'diagnosis' && <SearchCheck className="h-5 w-5" />}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 truncate">
+                    {activity.type === 'recommendation' && `${translations[language]?.cards?.recommendation?.title || 'Crop Recommendation'}: ${activity.crop}`}
+                    {activity.type === 'weather_alert' && `${translations[language]?.alerts?.weatherAlert || 'Weather Alert'}: ${activity.message}`}
+                    {activity.type === 'diagnosis' && `${translations[language]?.diagnosis?.completed || 'Diagnosis Completed'}: ${activity.issue} (${activity.crop})`}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {new Date(activity.date).toLocaleString(language, {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })}
+                  </p>
+                </div>
+                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  activity.status === 'completed' 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-yellow-100 text-yellow-800'
+                }`}>
+                  {activity.status === 'completed' 
+                    ? translations[language]?.status?.completed || 'Completed' 
+                    : translations[language]?.status?.pending || 'Pending'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Alerts Section */}
+        <div className="bg-white rounded-2xl p-6 shadow-sm border">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            {translations[language]?.alerts?.title || 'Important Alerts'}
           </h3>
           <div className="space-y-4">
             {alerts.slice(0, 3).map((alert) => (
-              <div key={alert.id} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <div className={`w-3 h-3 rounded-full ${
+              <div key={alert.id} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                <div className={`w-3 h-3 rounded-full mt-1.5 flex-shrink-0 ${
                   alert.priority === 'high' ? 'bg-red-500' : 'bg-yellow-500'
                 }`}></div>
                 <div className="flex-1">
@@ -337,17 +435,12 @@ const FarmerDashboard = ({ onLogout }) => {
                      language === 'marathi' ? alert.titleMr || alert.title :
                      language === 'gujarati' ? alert.titleGu || alert.title : alert.title}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 mt-1">
                     {language === 'english' ? alert.messageEn || alert.message : 
                      language === 'marathi' ? alert.messageMr || alert.message :
                      language === 'gujarati' ? alert.messageGu || alert.message : alert.message}
                   </p>
                 </div>
-                <span className="text-xs text-gray-500">
-                  {new Date(alert.timestamp).toLocaleDateString(
-                    language === 'english' ? 'en-IN' : 'hi-IN'
-                  )}
-                </span>
               </div>
             ))}
           </div>

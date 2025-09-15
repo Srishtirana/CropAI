@@ -1,0 +1,67 @@
+2025-09-14 20:09:42 info: Server running in development mode on port 5000
+2025-09-14 20:09:42 info: Connected to MongoDB
+2025-09-14 20:10:49 info: ::1 - - [14/Sep/2025:14:40:49 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:14:20 error: Error: Not allowed by CORS
+2025-09-14 20:14:33 error: Error: Not allowed by CORS
+2025-09-14 20:14:44 error: Error: Not allowed by CORS
+2025-09-14 20:15:13 error: Error: Not allowed by CORS
+2025-09-14 20:15:26 error: Error: Not allowed by CORS
+2025-09-14 20:15:28 error: Error: Not allowed by CORS
+2025-09-14 20:16:09 error: Error: Not allowed by CORS
+2025-09-14 20:23:24 error: Error: Not allowed by CORS
+2025-09-14 20:24:13 error: Error: Not allowed by CORS
+2025-09-14 20:24:15 error: Error: Not allowed by CORS
+2025-09-14 20:25:54 error: Error: Not allowed by CORS
+2025-09-14 20:28:51 error: Error: Not allowed by CORS
+2025-09-14 20:28:53 error: Error: Not allowed by CORS
+2025-09-14 20:28:56 error: Error: Not allowed by CORS
+2025-09-14 20:28:59 error: Error: Not allowed by CORS
+2025-09-14 20:30:01 error: Error: Not allowed by CORS
+2025-09-14 20:30:30 error: Error: Not allowed by CORS
+2025-09-14 20:33:04 info: Server running in development mode on port 5000
+2025-09-14 20:33:04 info: Connected to MongoDB
+2025-09-14 20:35:55 info: Server running in development mode on port 5000
+2025-09-14 20:35:55 info: Connected to MongoDB
+2025-09-14 20:36:56 info: New user registered: testuser@example.com with role: farmer
+2025-09-14 20:36:56 info: ::1 - - [14/Sep/2025:15:06:56 +0000] "POST /api/v1/auth/register HTTP/1.1" 201 331 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.6584"
+2025-09-14 20:37:44 info: User logged in: testuser@example.com
+2025-09-14 20:37:44 info: ::1 - - [14/Sep/2025:15:07:44 +0000] "POST /api/v1/auth/login HTTP/1.1" 200 331 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.6584"
+2025-09-14 20:47:45 info: Server running in development mode on port 5000
+2025-09-14 20:47:45 info: Connected to MongoDB
+2025-09-14 20:50:02 info: New user registered: srishtirana117@gmail.com with role: farmer
+2025-09-14 20:50:02 info: ::1 - - [14/Sep/2025:15:20:02 +0000] "POST /api/v1/auth/register HTTP/1.1" 201 338 "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:50:43 info: ::1 - - [14/Sep/2025:15:20:43 +0000] "GET /api/v1/auth/me HTTP/1.1" 200 319 "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:50:43 info: ::1 - - [14/Sep/2025:15:20:43 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:50:43 info: ::1 - - [14/Sep/2025:15:20:43 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:50:43 info: ::1 - - [14/Sep/2025:15:20:43 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:50:51 info: ::1 - - [14/Sep/2025:15:20:51 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:50:51 info: ::1 - - [14/Sep/2025:15:20:51 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:53:02 info: Server running in development mode on port 5000
+2025-09-14 20:53:02 info: Connected to MongoDB
+2025-09-14 20:54:07 info: ::1 - - [14/Sep/2025:15:24:07 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-14 20:54:07 info: ::1 - - [14/Sep/2025:15:24:07 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:32:13 info: ::1 - - [14/Sep/2025:21:02:13 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:32:13 info: ::1 - - [14/Sep/2025:21:02:13 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:35:40 info: Server running in development mode on port 5000
+2025-09-15 02:35:40 info: Connected to MongoDB
+2025-09-15 02:37:51 info: ::1 - - [14/Sep/2025:21:07:51 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:37:51 info: ::1 - - [14/Sep/2025:21:07:51 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:40:33 info: Server running in development mode on port 5000
+2025-09-15 02:40:33 info: Connected to MongoDB
+2025-09-15 02:42:57 info: ::1 - - [14/Sep/2025:21:12:57 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:42:57 info: ::1 - - [14/Sep/2025:21:12:57 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:50:41 info: 127.0.0.1 - - [14/Sep/2025:21:20:41 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:5002/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:54:17 info: Server running in development mode on port 5000
+2025-09-15 02:54:17 info: Connected to MongoDB
+2025-09-15 02:57:38 info: ::1 - - [14/Sep/2025:21:27:38 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 02:57:38 info: ::1 - - [14/Sep/2025:21:27:38 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 03:13:03 info: Server running in development mode on port 5000
+2025-09-15 03:13:03 info: Connected to MongoDB
+2025-09-15 03:14:46 info: ::1 - - [14/Sep/2025:21:44:46 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 03:14:46 info: ::1 - - [14/Sep/2025:21:44:46 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 03:20:40 info: Server running in development mode on port 5000
+2025-09-15 03:20:40 info: Connected to MongoDB
+2025-09-15 03:21:18 info: ::1 - - [14/Sep/2025:21:51:18 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 03:21:18 info: ::1 - - [14/Sep/2025:21:51:18 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 03:34:10 info: ::1 - - [14/Sep/2025:22:04:10 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+2025-09-15 03:34:10 info: ::1 - - [14/Sep/2025:22:04:10 +0000] "GET /api/v1/auth/me HTTP/1.1" 304 - "http://localhost:5001/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"

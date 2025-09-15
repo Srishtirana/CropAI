@@ -3,7 +3,6 @@ import LanguageSwitcher from './LanguageSwitcher';
 import { useUser } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Sprout, TrendingUp, Calendar, Droplets, Sun, Cloud, Thermometer } from 'lucide-react';
-import aiService from '../services/aiService';
 import weatherService from '../services/weatherService';
 
 const RecommendationResult = () => {
@@ -147,10 +146,37 @@ const RecommendationResult = () => {
           const parsedData = JSON.parse(storedData);
           setFormData(parsedData);
           
-          // Get AI recommendations based on form data
-          const aiRecommendations = await aiService.getCropRecommendation(parsedData);
-          setRecommendations(aiRecommendations.recommendations || []);
-          setWeatherData(aiRecommendations.weatherData);
+          // Use mock data for recommendations
+          const mockRecommendations = [
+            {
+              name: 'Wheat',
+              confidence: 85,
+              yield: '40-50',
+              season: language === 'hindi' ? 'रबी' : language === 'marathi' ? 'रबी' : language === 'gujarati' ? 'રબી' : 'Rabi',
+              duration: '120-150',
+              water: 'Medium',
+              temperature: '20-25°C',
+              benefits: language === 'hindi' ? ['उच्च पैदावार', 'कम रखरखाव'] : language === 'marathi' ? ['उच्च उत्पादन', 'कमी देखभाल'] : language === 'gujarati' ? ['ઊંચી ઉપજ', 'ઓછી જાળવણી'] : ['High yield', 'Low maintenance'],
+              challenges: language === 'hindi' ? ['कीटों का प्रकोप', 'पानी की आवश्यकता'] : language === 'marathi' ? ['कीटांचा त्रास', 'पाण्याची गरज'] : language === 'gujarati' ? ['કીટકોનો ત્રાસ', 'પાણીની જરૂરિયાત'] : ['Pest attacks', 'Water requirement']
+            },
+            {
+              name: 'Rice',
+              confidence: 75,
+              yield: '45-55',
+              season: language === 'hindi' ? 'खरीफ' : language === 'marathi' ? 'खरीप' : language === 'gujarati' ? 'ખરીફ' : 'Kharif',
+              duration: '150-180',
+              water: 'High',
+              temperature: '25-35°C',
+              benefits: language === 'hindi' ? ['उच्च मांग', 'अच्छी कीमत'] : language === 'marathi' ? ['जास्त मागणी', 'चांगला भाव'] : language === 'gujarati' ? ['ઊંચી માંગ', 'સારી કિંમત'] : ['High demand', 'Good price'],
+              challenges: language === 'hindi' ? ['ज्यादा पानी की आवश्यकता', 'जलभराव'] : language === 'marathi' ? ['जास्त पाण्याची गरज', 'पाण्याचा साठा'] : language === 'gujarati' ? ['વધુ પાણીની જરૂરિયાત', 'પાણીનો સંગ્રહ'] : ['More water requirement', 'Water logging']
+            }
+          ];
+          
+          // Get weather data
+          const weatherResponse = await weatherService.getWeatherByLocation(parsedData.location);
+          
+          setRecommendations(mockRecommendations);
+          setWeatherData(weatherResponse);
         } else {
           // Fallback to mock data if no form data
           setRecommendations(mockRecommendations);

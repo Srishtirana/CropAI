@@ -13,14 +13,19 @@ export const useUser = () => {
 export const UserProvider = ({ children }) => {
   const initialLang = typeof window !== 'undefined' ? (localStorage.getItem('lang') || 'hindi') : 'hindi';
 
-  const [user, setUser] = useState({
-    name: 'राम कुमार',
-    phone: '+91 98765 43210',
-    location: 'मध्य प्रदेश, भारत',
-    farmSize: '5 एकड़',
-    language: initialLang,
-    isLoggedIn: false,
-    loginTime: null
+  const [user, setUser] = useState(() => {
+    const savedUser = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
+    return savedUser ? JSON.parse(savedUser) : {
+      name: 'राम कुमार',
+      phone: '+91 98765 43210',
+      location: {
+        displayName: 'मध्य प्रदेश, भारत',
+        coordinates: null,
+        address: {}
+      },
+      farmSize: '5 एकड़',
+      language: initialLang
+    };
   });
 
   const [language, setLanguage] = useState(initialLang);
@@ -155,38 +160,37 @@ export const UserProvider = ({ children }) => {
     }
   ]);
 
-  const updateUser = (newUserData) => {
-    setUser(prev => ({ ...prev, ...newUserData }));
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
+    setUser(prev => {
+      const updatedUser = { ...prev, language: lang };
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        localStorage.setItem('lang', lang);
+      }
+      return updatedUser;
+    });
   };
 
-  const loginUser = (userData) => {
-    setUser(prev => ({ 
-      ...prev, 
-      ...userData, 
-      isLoggedIn: true, 
-      loginTime: new Date().toISOString() 
-    }));
+  const updateUserLocation = async (locationData) => {
+    const updatedUser = {
+      ...user,
+      location: locationData
+    };
+    setUser(updatedUser);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+    }
+    return updatedUser;
   };
 
-  const logoutUser = () => {
-    setUser(prev => ({ 
-      ...prev, 
-      isLoggedIn: false, 
-      loginTime: null 
-    }));
-  };
-
-  const addRecommendation = (recommendation) => {
-    setRecommendations(prev => [recommendation, ...prev]);
-  };
-
-  const addAlert = (alert) => {
-    setAlerts(prev => [alert, ...prev]);
-  };
-
-  const changeLanguage = (newLanguage) => {
-    setLanguage(newLanguage);
-    setUser(prev => ({ ...prev, language: newLanguage }));
+  const updateUser = (newData) => {
+    const updatedUser = { ...user, ...newData };
+    setUser(updatedUser);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+    }
+    return updatedUser;
   };
 
   useEffect(() => {
@@ -195,7 +199,6 @@ export const UserProvider = ({ children }) => {
     } catch (_) {}
   }, [language]);
 
-  // Current language bundle and available languages list
   const t = translations[language] || translations.hindi;
   const languages = [
     { code: 'hindi', name: 'हिंदी', flag: '🇮🇳' },
@@ -206,18 +209,11 @@ export const UserProvider = ({ children }) => {
 
   const value = {
     user,
-    updateUser,
-    loginUser,
-    logoutUser,
-    recommendations,
-    addRecommendation,
-    alerts,
-    addAlert,
     language,
     changeLanguage,
-    translations,
-    t,
-    languages
+    updateUserLocation,
+    updateUser,
+    t: translations[language]
   };
 
   return (
